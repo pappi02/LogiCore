@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import { Button } from '../atoms/Button';
 import { Icon } from '../atoms/Icon';
+import logoImage from '../../assets/logos/LogiCore_Technologies_logo-no bg.png';
 import styles from './Header.module.css';
 
 const navItems = [
@@ -39,8 +40,7 @@ export const Header: React.FC = () => {
       <div className={styles.container}>
         {/* Logo */}
         <Link to="/" className={styles.logo} onClick={() => setIsMobileMenuOpen(false)}>
-          <span className={styles.logoIcon}>⚡</span>
-          <span className={styles.logoText}>LogiCore</span>
+          <img src={logoImage} alt="LogiCore Technologies" className={styles.logoImage} />
         </Link>
 
         {/* Desktop Navigation */}

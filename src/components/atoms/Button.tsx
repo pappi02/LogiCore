@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import styles from './Button.module.css';
 
 export interface ButtonProps {
@@ -38,9 +39,34 @@ export const Button: React.FC<ButtonProps> = ({
     .join(' ');
 
   if (href) {
+    // Use React Router Link for internal routes, regular <a> for external URLs
+    const isExternal = href.startsWith('http');
+    
+    if (isExternal) {
+      return (
+        <a
+          href={href}
+          className={classNames}
+          onClick={(e) => {
+            if (disabled || loading) {
+              e.preventDefault();
+              return;
+            }
+            onClick?.();
+          }}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          {icon && <span className={styles.icon}>{icon}</span>}
+          <span>{children}</span>
+          {loading && <span className={styles.spinner}>⏳</span>}
+        </a>
+      );
+    }
+    
     return (
-      <a
-        href={href}
+      <Link
+        to={href}
         className={classNames}
         onClick={(e) => {
           if (disabled || loading) {
@@ -49,13 +75,11 @@ export const Button: React.FC<ButtonProps> = ({
           }
           onClick?.();
         }}
-        target={href.startsWith('http') ? '_blank' : undefined}
-        rel={href.startsWith('http') ? 'noopener noreferrer' : undefined}
       >
         {icon && <span className={styles.icon}>{icon}</span>}
         <span>{children}</span>
         {loading && <span className={styles.spinner}>⏳</span>}
-      </a>
+      </Link>
     );
   }
 

@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from '../atoms/Button';
 import { Icon } from '../atoms/Icon';
+import logoImage from '../../assets/logos/LogiCore_Technologies_logo-no bg.png';
 import styles from './Footer.module.css';
 
 export const Footer: React.FC = () => {
@@ -31,8 +32,7 @@ export const Footer: React.FC = () => {
           {/* Company Info */}
           <div className={styles.column}>
             <div className={styles.logo}>
-              <span className={styles.logoIcon}>⚡</span>
-              <span className={styles.logoText}>LogiCore</span>
+              <img src={logoImage} alt="LogiCore Technologies" className={styles.logoImage} />
             </div>
             <p className={styles.description}>
               Modern technology solutions for your business. We deliver innovative digital experiences that drive growth and success.

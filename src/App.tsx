@@ -3,6 +3,7 @@ import { useEffect } from 'react';
 import { Header } from './components/layout/Header';
 import { Footer } from './components/layout/Footer';
 import { WhatsAppWidget } from './components/features/WhatsAppWidget';
+import { ErrorBoundary } from './components/ErrorBoundary';
 import { Home } from './pages/Home';
 import { About } from './pages/About';
 import { Contact } from './pages/Contact';
@@ -11,6 +12,7 @@ import { Portfolio } from './pages/Portfolio';
 import { WhyUs } from './pages/WhyUs';
 import { Privacy } from './pages/Privacy';
 import { Terms } from './pages/Terms';
+import { NotFound } from './pages/NotFound';
 
 function App() {
   const location = useLocation();
@@ -20,7 +22,7 @@ function App() {
   }, [location]);
 
   return (
-    <>
+    <ErrorBoundary>
       <Header />
       <main>
         <Routes>
@@ -32,12 +34,12 @@ function App() {
           <Route path="/contact" element={<Contact />} />
           <Route path="/privacy" element={<Privacy />} />
           <Route path="/terms" element={<Terms />} />
-          <Route path="*" element={<Home />} />
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </main>
       <Footer />
       <WhatsAppWidget />
-    </>
+    </ErrorBoundary>
   );
 }
 
