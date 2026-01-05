@@ -11,10 +11,309 @@
   align-items: center;
 }
 
+.heroWrapper {
+  display: grid;
+  grid-template-columns: minmax(300px, 25%) 1fr;
+  gap: var(--spacing-12);
+  align-items: center;
+  width: 100%;
+}
+
 .heroContent {
   position: relative;
   z-index: 2;
-  max-width: 800px;
+}
+
+/* Offer Banner - Layered Polygonal Design */
+.offerBanner {
+  position: relative;
+  width: 100%;
+  max-width: 420px;
+  height: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: bannerFloat 4s ease-in-out infinite;
+  margin: 0 auto;
+}
+
+/* Accent Lines Around Banner */
+.accentLine1 {
+  position: absolute;
+  top: -40px;
+  left: -60px;
+  width: 80px;
+  height: 4px;
+  background: linear-gradient(90deg, var(--color-teal), transparent);
+  transform: rotate(-35deg);
+  animation: slideIn 1s ease-out;
+}
+
+.accentLine2 {
+  position: absolute;
+  top: -30px;
+  left: -50px;
+  width: 60px;
+  height: 3px;
+  background: linear-gradient(90deg, var(--color-blue), transparent);
+  transform: rotate(-40deg);
+  animation: slideIn 1.2s ease-out;
+}
+
+.accentLine3 {
+  position: absolute;
+  top: -20px;
+  right: 60px;
+  width: 50px;
+  height: 4px;
+  background: var(--color-teal);
+  transform: rotate(-70deg);
+  animation: slideIn 1.4s ease-out;
+}
+
+.accentLine4 {
+  position: absolute;
+  top: 40px;
+  right: -50px;
+  width: 40px;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, var(--color-blue));
+  transform: rotate(20deg);
+  animation: slideIn 1.6s ease-out;
+}
+
+.accentLine5 {
+  position: absolute;
+  bottom: 50px;
+  left: -45px;
+  width: 65px;
+  height: 3px;
+  background: linear-gradient(90deg, var(--color-teal), transparent);
+  transform: rotate(45deg);
+  animation: slideIn 1.8s ease-out;
+}
+
+.accentLine6 {
+  position: absolute;
+  bottom: -30px;
+  right: -40px;
+  width: 70px;
+  height: 4px;
+  background: linear-gradient(90deg, transparent, var(--color-blue));
+  transform: rotate(-30deg);
+  animation: slideIn 2s ease-out;
+}
+
+/* Layer 1 - Top Dark Layer */
+.bannerLayer1 {
+  position: absolute;
+  width: 100%;
+  height: 85px;
+  background: linear-gradient(135deg, var(--color-navy) 0%, #1a2332 100%);
+  clip-path: polygon(8% 0%, 100% 0%, 92% 100%, 0% 100%);
+  top: 0;
+  left: 0;
+  z-index: 4;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+.layer1Content {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 20px;
+}
+
+.limitedOffer {
+  color: white;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  opacity: 0.9;
+  text-align: center;
+}
+
+/* Layer 2 - Teal Accent Layer */
+.bannerLayer2 {
+  position: absolute;
+  width: 110%;
+  height: 130px;
+  background: linear-gradient(135deg, var(--color-teal) 0%, #14a89e 100%);
+  clip-path: polygon(0% 0%, 100% 0%, 85% 100%, 8% 100%);
+  top: 18px;
+  right: -5%;
+  z-index: 2;
+  box-shadow: 0 12px 30px rgba(0, 180, 216, 0.25);
+  transform: rotate(-1deg);
+}
+
+/* Layer 3 - Main Yellow Layer */
+.bannerLayer3 {
+  position: absolute;
+  width: 95%;
+  height: 120px;
+  background: linear-gradient(135deg, #FFD93D 0%, #FFC700 100%);
+  clip-path: polygon(15% 0%, 100% 0%, 100% 100%, 0% 100%);
+  top: 85px;
+  left: 5%;
+  z-index: 3;
+  box-shadow: 0 10px 25px rgba(255, 217, 61, 0.3);
+}
+
+.layer3Content {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 0 20px;
+  padding-right: 100px;
+}
+
+.mainOffer {
+  font-size: clamp(26px, 3.5vw, 36px);
+  font-weight: 900;
+  color: #1a1a1a;
+  line-height: 1.1;
+  font-style: italic;
+  letter-spacing: -0.5px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.08);
+  text-align: center;
+}
+
+/* Layer 90%;
+  height: 110px;
+  background: linear-gradient(135deg, var(--color-blue) 0%, #0066cc 100%);
+  clip-path: polygon(0% 0%, 92% 0%, 100% 100%, 12% 100%);
+  bottom: 0;
+  left: 0;
+  z-index: 1;
+  box-shadow: 0 15px 35px rgba(0, 123, 255, 0.3);
+  transform: rotate(1deg);
+}
+
+/* Content Overlay */
+.bannerContent {
+  position: absolute;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 5;
+  text-align: center;
+  width: 85%;
+}
+
+.offerSubText {
+  font-size: clamp(11px, 1.3vw, 13px);
+  font-weight: 700;
+  color: var(--color-blue);
+  margin-bottom: 8px;
+  line-height: 1.3;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+}
+
+.offerCTA {
+  display: inline-block;
+  background: white;
+  color: var(--color-navy);
+  font-size: clamp(9px, 1.1vw, 11px);
+  font-weight: 800;
+  padding: 6px 16px;
+  border-radius: 3px;
+  letter-spacing: 1.2px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  text-transform: uppercase;
+}
+
+/* Circular Badge */
+.circleBadge {
+  position: absolute;
+  top: 45%;
+  right: 5px;
+  transform: translateY(-50%);
+  width: 95px;
+  height: 95px;
+  background: linear-gradient(135deg, var(--color-teal) 0%, #00a8cc 100%);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 8px 25px rgba(0, 180, 216, 0.4);
+  z-index: 6;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+.circleBadge::before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border: 2px dashed white;
+  border-radius: 50%;
+  opacity: 0.4;
+  animation: rotate 20s linear infinite;
+}
+
+.badgeInner {
+  width: 78px;
+  height: 78px;
+  background: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.badgeIcon {
+  font-size: 36center;
+  justify-content: center;
+  box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.badgeIcon {
+  font-size: 40px;
+  color: var(--color-teal);
+  font-weight: bold;
+}
+
+/* Animations */
+@keyframes bannerFloat {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-20px) rotate(-35deg);
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: translateY(-50%) scale(1);
+  }
+  50% {
+    transform: translateY(-50%) scale(1.05);
+  }
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 .heroTitle {
@@ -219,7 +518,115 @@
     width: 100%;
   }
 
-  .heroPattern {
+  /* Floating banner on mobile */
+  .heroWrapper {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-6);
+    position: relative;
+  }
+
+  .offerBanner {
+    position: fixed;
+    top: 75px;
+    right: 12px;
+    max-width: 130px;
+    height: 95px;
+    z-index: 100;
+    transform: scale(0.65);
+    transform-origin: top right;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+    border-radius: 6px;
+    background: transparent;
+    backdrop-filter: none;
+    padding: 2px;
+  }
+
+  .bannerLayer1,
+  .bannerLayer2,
+  .bannerLayer3,
+  .bannerLayer4 {
+    width: 100%;
+  }
+
+  .bannerLayer1 {
+    height: 32px;
+  }
+
+  .layer1Content {
+    padding: 0 8px;
+  }
+
+  .limitedOffer {
+    font-size: 6px;
+    letter-spacing: 0.5px;
+  }
+
+  .bannerLayer2 {
+    height: 42px;
+  }
+
+  .bannerLayer3 {
+    height: 38px;
+    top: 32px;
+  }
+
+  .layer3Content {
+    padding: 0 8px;
+  }
+
+  .mainOffer {
+    font-size: 13px;
+  }
+
+  .bannerLayer4 {
+    height: 32px;
+  }
+
+  .bannerContent {
+    bottom: 5px;
+    width: 80%;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .offerSubText {
+    font-size: 5px;
+    margin-bottom: 1px;
+    font-weight: 600;
+  }
+
+  .offerCTA {
+    font-size: 5px;
+    padding: 2px 6px;
+    letter-spacing: 0.4px;
+  }
+
+  .circleBadge {
+    width: 28px;
+    height: 28px;
+    right:-6px;
+    top: 52%;
+  }
+
+  .circleBadge::before {
+    border-width: 0.8px;
+  }
+
+  .badgeInner {
+    width: 32px;
+    height: 32px;
+  }
+
+  .badgeIcon {
+    font-size: 12px;
+  }
+
+  .accentLine1,
+  .accentLine2,
+  .accentLine3,
+  .accentLine4,
+  .accentLine5,
+  .accentLine6 {
     display: none;
   }
 

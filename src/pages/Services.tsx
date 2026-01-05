@@ -36,6 +36,52 @@ export const Services: React.FC = () => {
       title: 'Security & Compliance',
       description: 'Secure-by-design builds with compliance guidance and proactive risk mitigation.',
     },
+    {
+      icon: 'sparkles',
+      title: 'AI-Driven Digital Solutions',
+      description: 'Practical, task-focused AI integrated into business systems to enhance efficiency, decision-making, and user engagement.',
+      details: {
+        overview: 'LogiCore implements AI responsibly—as an intelligent assistive layer within digital platforms—not as uncontrolled automation.',
+        coverage: [
+          'AI-assisted business process automation',
+          'Intelligent conversational interfaces and support systems',
+          'AI-enhanced analytics dashboards and reporting',
+          'Predictive data analysis and actionable insights',
+          'AI feasibility studies and integration strategy',
+        ],
+        problems: [
+          'Manual and repetitive operational workflows',
+          'Slow or delayed information access and retrieval',
+          'Data overload without actionable intelligence',
+          'Limited decision support for business stakeholders',
+          'Poor user experience in digital interactions',
+        ],
+      },
+    },
+    {
+      icon: 'automation',
+      title: 'Business Process Automation',
+      description: 'End-to-end workflow automation that eliminates manual handoffs, reduces errors, and accelerates business operations.',
+      details: {
+        overview: 'LogiCore designs and deploys intelligent automation solutions that connect disparate systems, streamline workflows, and enable your teams to focus on high-value work—not repetitive tasks.',
+        coverage: [
+          'Workflow orchestration and process design',
+          'Legacy system integration and data synchronization',
+          'RPA (Robotic Process Automation) implementation',
+          'Document processing and intelligent capture',
+          'Multi-system API integration and middleware solutions',
+          'Automation monitoring, auditing, and compliance tracking',
+        ],
+        problems: [
+          'Manual data entry and redundant operational workflows',
+          'System silos preventing seamless information flow',
+          'High error rates from human-dependent processes',
+          'Delayed cycle times impacting productivity',
+          'Inability to scale operations without increasing headcount',
+          'Compliance and audit trail gaps in critical processes',
+        ],
+      },
+    },
   ];
 
   const delivery = [
@@ -64,8 +110,8 @@ export const Services: React.FC = () => {
   const capabilities = ['React & TypeScript', 'React Native', 'Node.js & APIs', 'AWS & Azure', 'CI/CD & IaC', 'Design Systems', 'Analytics & Experimentation', 'QA Automation'];
 
   const stats = [
-    { value: '10+ years', label: 'Shipping production systems' },
-    { value: '50+ launches', label: 'Platforms, apps, and sites' },
+    { value: '10+', label: 'Years of Experience' },
+    { value: '30+', label: 'Projects Launched' },
     { value: '4.9 / 5', label: 'Average client satisfaction' },
   ];
 

@@ -75,15 +75,54 @@ export const Home: React.FC = () => {
     <div className={styles.home}>
       {/* Hero Section */}
       <Section padding="xl" className={styles.hero}>
-        <div className={styles.heroContent}>
-          <h1 className={styles.heroTitle}>
-            Modern Technology Solutions for Your Business
-          </h1>
-          <p className={styles.heroSubtext}>
-            Digital transformation, web development, consulting, and support - 
-            delivering innovative experiences that drive growth and success.
-          </p>
-          <div className={styles.heroActions}>
+        <div className={styles.heroWrapper}>
+          {/* Offer Banner */}
+          <div className={styles.offerBanner}>
+            {/* Accent Lines */}
+            <div className={styles.accentLine1}></div>
+            <div className={styles.accentLine2}></div>
+            <div className={styles.accentLine3}></div>
+            <div className={styles.accentLine4}></div>
+            <div className={styles.accentLine5}></div>
+            <div className={styles.accentLine6}></div>
+            
+            {/* Layered Shapes */}
+            <div className={styles.bannerLayer1}>
+              <div className={styles.layer1Content}>
+                <span className={styles.limitedOffer}>LIMITED TIME OFFER</span>
+              </div>
+            </div>
+            <div className={styles.bannerLayer2}></div>
+            <div className={styles.bannerLayer3}>
+              <div className={styles.layer3Content}>
+                <div className={styles.mainOffer}>60 DAYS FREE</div>
+              </div>
+            </div>
+            <div className={styles.bannerLayer4}></div>
+            
+            {/* Content Overlay */}
+            <div className={styles.bannerContent}>
+              <div className={styles.offerSubText}>Web/App Support & Maintenance</div>
+              <div className={styles.offerCTA}>FOR EVERY PROJECT</div>
+            </div>
+            
+            {/* Circular Badge */}
+            <div className={styles.circleBadge}>
+              <div className={styles.badgeInner}>
+                <span className={styles.badgeIcon}>✓</span>
+              </div>
+            </div>
+          </div>
+
+          <div className={styles.heroContent}>
+            <h1 className={styles.heroTitle}>
+              Modern Technology Solutions for Your Business
+            </h1>
+            <p className={styles.heroSubtext}>
+              Digital transformation, web development, consulting, and support - 
+              delivering innovative experiences that drive growth and success.
+            </p>
+            <div className={styles.heroActions}>
             <Button
               variant="cta"
               size="lg"
@@ -95,6 +134,7 @@ export const Home: React.FC = () => {
             <Button variant="secondary" size="lg" href="/services">
               Explore Services
             </Button>
+          </div>
           </div>
         </div>
         <div className={styles.heroPattern}>
