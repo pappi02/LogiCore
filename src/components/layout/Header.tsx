@@ -41,6 +41,7 @@ export const Header: React.FC = () => {
         {/* Logo */}
         <Link to="/" className={styles.logo} onClick={() => setIsMobileMenuOpen(false)}>
           <img src={logoImage} alt="LogiCore Technologies" className={styles.logoImage} />
+          <span className={styles.logoText}>LogiCore Technologies</span>
         </Link>
 
         {/* Desktop Navigation */}
