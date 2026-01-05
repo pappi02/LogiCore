@@ -1,0 +1,9 @@
+services:
+  - type: static
+    name: logicore
+    env: static
+    buildCommand: npm run build
+    staticPublishPath: ./dist
+    routes:
+      - path: /*
+        destination: /index.html
