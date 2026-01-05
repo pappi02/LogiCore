@@ -1,0 +1,84 @@
+.page {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-24);
+}
+
+.hero {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  align-items: center;
+  gap: var(--spacing-12);
+}
+
+.heroTitle {
+  font-size: clamp(32px, 5vw, 48px);
+  color: var(--color-white);
+  margin-bottom: var(--spacing-4);
+}
+
+.heroSubtitle {
+  color: var(--color-gray-200);
+  max-width: 700px;
+}
+
+.pillars {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: var(--spacing-6);
+}
+
+.pillarCard {
+  display: grid;
+  gap: var(--spacing-2);
+}
+
+.pillarTitle {
+  font-weight: 700;
+  color: var(--color-navy);
+}
+
+.pillarText {
+  color: var(--color-gray-500);
+}
+
+.sectionHeader {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-2);
+  margin-bottom: var(--spacing-6);
+}
+
+.sectionTitle {
+  font-size: clamp(28px, 4vw, 36px);
+}
+
+.sectionSubtitle {
+  color: var(--color-gray-500);
+  max-width: 720px;
+}
+
+.differentiators {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: var(--spacing-6);
+}
+
+.listItem {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-2);
+  color: var(--color-navy);
+  font-weight: 600;
+}
+
+.proofCard {
+  display: grid;
+  gap: var(--spacing-3);
+}
+
+@media (max-width: 768px) {
+  .hero {
+    grid-template-columns: 1fr;
+  }
+}

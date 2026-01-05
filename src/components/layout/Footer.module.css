@@ -1,0 +1,168 @@
+.footer {
+  background-color: var(--color-navy);
+  color: var(--color-white);
+  padding-top: var(--spacing-16);
+  padding-bottom: var(--spacing-8);
+}
+
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 var(--spacing-4);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--spacing-12);
+  margin-bottom: var(--spacing-12);
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-4);
+}
+
+/* Logo */
+.logo {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-2);
+  font-family: var(--font-heading);
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: var(--spacing-2);
+}
+
+.logoIcon {
+  font-size: 28px;
+}
+
+.logoText {
+  color: var(--color-white);
+}
+
+.description {
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--color-gray-300);
+  margin-bottom: var(--spacing-4);
+}
+
+/* Column Titles */
+.columnTitle {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--color-white);
+  margin-bottom: var(--spacing-2);
+}
+
+/* Links */
+.linkList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-3);
+}
+
+.link {
+  font-size: 16px;
+  color: var(--color-gray-300);
+  text-decoration: none;
+  transition: color var(--transition-default);
+}
+
+.link:hover {
+  color: var(--color-blue);
+}
+
+/* Contact List */
+.contactList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-3);
+}
+
+.contactItem {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-2);
+  font-size: 16px;
+  color: var(--color-gray-300);
+}
+
+.text {
+  color: var(--color-gray-300);
+}
+
+/* Bottom Bar */
+.bottomBar {
+  padding-top: var(--spacing-8);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.copyright {
+  font-size: 14px;
+  color: var(--color-gray-300);
+  margin: 0;
+}
+
+.bottomLinks {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-3);
+}
+
+.bottomLink {
+  font-size: 14px;
+  color: var(--color-gray-300);
+  text-decoration: none;
+  transition: color var(--transition-default);
+}
+
+.bottomLink:hover {
+  color: var(--color-blue);
+}
+
+.separator {
+  color: var(--color-gray-500);
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--spacing-8);
+  }
+}
+
+@media (max-width: 640px) {
+  .footer {
+    padding-top: var(--spacing-12);
+  }
+
+  .grid {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-8);
+  }
+
+  .column {
+    gap: var(--spacing-3);
+  }
+
+  .bottomBar {
+    flex-direction: column;
+    align-items: center;
+    gap: var(--spacing-4);
+    text-align: center;
+  }
+}

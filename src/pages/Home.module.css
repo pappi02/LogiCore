@@ -1,0 +1,244 @@
+.home {
+  padding-top: 72px;
+}
+
+/* Hero Section */
+.hero {
+  position: relative;
+  overflow: hidden;
+  min-height: 600px;
+  display: flex;
+  align-items: center;
+}
+
+.heroContent {
+  position: relative;
+  z-index: 2;
+  max-width: 800px;
+}
+
+.heroTitle {
+  font-size: clamp(36px, 6vw, 56px);
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: var(--spacing-6);
+  color: var(--color-navy);
+}
+
+.heroSubtext {
+  font-size: clamp(18px, 2.5vw, 22px);
+  line-height: 1.6;
+  color: var(--color-gray-500);
+  margin-bottom: var(--spacing-8);
+}
+
+.heroActions {
+  display: flex;
+  gap: var(--spacing-4);
+  flex-wrap: wrap;
+}
+
+.heroPattern {
+  position: absolute;
+  right: -100px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 1;
+  opacity: 0.1;
+}
+
+.patternGrid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 24px;
+}
+
+.patternDot {
+  width: 60px;
+  height: 60px;
+  background: linear-gradient(135deg, var(--color-blue), var(--color-teal));
+  border-radius: 50%;
+  animation: float 3s ease-in-out infinite;
+}
+
+.patternDot:nth-child(even) {
+  animation-delay: 0.5s;
+}
+
+.patternDot:nth-child(3n) {
+  animation-delay: 1s;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+/* Section Headers */
+.sectionHeader {
+  text-align: center;
+  max-width: 700px;
+  margin: 0 auto var(--spacing-12);
+}
+
+.sectionTitle {
+  font-size: clamp(32px, 5vw, 42px);
+  font-weight: 700;
+  margin-bottom: var(--spacing-3);
+}
+
+.sectionSubtitle {
+  font-size: clamp(16px, 2vw, 20px);
+  color: var(--color-gray-500);
+}
+
+/* Service Cards */
+.serviceCard {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.serviceIcon {
+  margin-bottom: var(--spacing-4);
+  padding: var(--spacing-4);
+  background-color: var(--color-gray-50);
+  border-radius: var(--radius-full);
+  width: 80px;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.serviceTitle {
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: var(--spacing-2);
+  color: var(--color-navy);
+}
+
+.serviceDescription {
+  font-size: 16px;
+  color: var(--color-gray-500);
+  line-height: 1.6;
+}
+
+/* Audience Cards */
+.audienceCard {
+  text-align: center;
+}
+
+.audienceIcon {
+  font-size: 48px;
+  margin-bottom: var(--spacing-3);
+}
+
+.audienceTitle {
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: var(--spacing-2);
+  color: var(--color-navy);
+}
+
+.audienceDescription {
+  font-size: 14px;
+  color: var(--color-gray-500);
+  line-height: 1.5;
+}
+
+/* Features */
+.featureItem {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-3);
+  padding: var(--spacing-4);
+  background-color: var(--color-white);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+}
+
+.featureText {
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--color-navy);
+}
+
+/* CTA Section */
+.ctaSection {
+  text-align: center;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.ctaTitle {
+  font-size: clamp(28px, 4vw, 40px);
+  font-weight: 700;
+  margin-bottom: var(--spacing-4);
+  color: var(--color-white);
+}
+
+.ctaText {
+  font-size: clamp(16px, 2vw, 20px);
+  color: var(--color-gray-300);
+  margin-bottom: var(--spacing-8);
+  line-height: 1.6;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .heroPattern {
+    right: -150px;
+  }
+
+  .patternGrid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .home {
+    padding-top: 64px;
+  }
+
+  .hero {
+    min-height: 500px;
+  }
+
+  .heroActions {
+    flex-direction: column;
+  }
+
+  .heroActions button,
+  .heroActions a {
+    width: 100%;
+  }
+
+  .heroPattern {
+    display: none;
+  }
+
+  .sectionHeader {
+    margin-bottom: var(--spacing-8);
+  }
+
+  .serviceIcon {
+    width: 64px;
+    height: 64px;
+  }
+}
+
+@media (max-width: 640px) {
+  .featureItem {
+    padding: var(--spacing-3);
+  }
+
+  .featureText {
+    font-size: 14px;
+  }
+}
