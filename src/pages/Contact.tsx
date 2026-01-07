@@ -70,7 +70,10 @@ export const Contact: React.FC = () => {
       // Fire auto-reply to the user via a dedicated template (custom code method)
       if (EMAILJS_AUTOREPLY_TEMPLATE_ID) {
         const autoReplyParams = {
+          to_name: formData.name,
           to_email: formData.email,
+          reply_to: formData.email,
+          user_email: formData.email,
           from_name: 'LogiCore Technologies',
           subject: 'Thanks for contacting LogiCore — we got your message',
           message: formData.message,

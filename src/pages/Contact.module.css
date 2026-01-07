@@ -358,4 +358,116 @@
   .infoSection {
     padding: var(--spacing-6);
   }
+
+  .modalOverlay {
+    padding: var(--spacing-4);
+  }
+
+  .modalContent {
+    padding: var(--spacing-6);
+    border-radius: 16px;
+    max-height: 90vh;
+    overflow-y: auto;
+  }
+
+  .modalIcon {
+    width: 64px;
+    height: 64px;
+    margin: 0 auto var(--spacing-4);
+  }
+
+  .modalContent h3 {
+    font-size: 20px;
+    margin: 0 0 var(--spacing-2) 0;
+  }
+
+  .modalText {
+    font-size: 15px;
+    margin: 0 0 var(--spacing-4) 0;
+  }
+
+  .modalChip {
+    font-size: 13px;
+    padding: var(--spacing-2) var(--spacing-3);
+    max-width: 100%;
+    word-break: break-word;
+  }
+
+  .statusList {
+    margin: var(--spacing-4) 0;
+    gap: var(--spacing-2);
+  }
+
+  .statusItem {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--spacing-3);
+    padding: var(--spacing-3);
+  }
+
+  .statusLeft {
+    gap: var(--spacing-2);
+  }
+
+  .statusDot {
+    width: 10px;
+    height: 10px;
+    box-shadow: 0 0 0 4px rgba(34, 197, 94, 0.12);
+  }
+
+  .statusPending .statusDot {
+    box-shadow: 0 0 0 4px rgba(148, 163, 184, 0.16);
+  }
+
+  .statusTitle {
+    font-size: 14px;
+  }
+
+  .statusHint {
+    font-size: 13px;
+  }
+
+  .statusBadge,
+  .statusBadgeMuted {
+    font-size: 12px;
+    padding: var(--spacing-1) var(--spacing-2);
+    width: 100%;
+    justify-content: center;
+  }
+
+  .modalActions {
+    margin-top: var(--spacing-5);
+  }
+}
+
+@media (max-width: 480px) {
+  .modalOverlay {
+    padding: var(--spacing-3);
+  }
+
+  .modalContent {
+    padding: var(--spacing-5);
+    border-radius: 12px;
+  }
+
+  .modalIcon {
+    width: 56px;
+    height: 56px;
+  }
+
+  .modalContent h3 {
+    font-size: 18px;
+  }
+
+  .modalText {
+    font-size: 14px;
+  }
+
+  .statusList {
+    gap: var(--spacing-2);
+  }
+
+  .statusItem {
+    padding: var(--spacing-2) var(--spacing-3);
+  }
 }
