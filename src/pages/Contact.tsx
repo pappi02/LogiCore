@@ -1,9 +1,23 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import emailjs from '@emailjs/browser';
 import { Section } from '../components/layout/Section';
 import { Card } from '../components/molecules/Card';
 import { Button } from '../components/atoms/Button';
 import { Icon } from '../components/atoms/Icon';
 import styles from './Contact.module.css';
+
+const COMPANY_EMAIL = 'logicore.tech1@gmail.com';
+const EMAILJS_SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID || '';
+const EMAILJS_TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID || '';
+const EMAILJS_AUTOREPLY_TEMPLATE_ID = import.meta.env.VITE_EMAILJS_AUTOREPLY_TEMPLATE_ID || '';
+const EMAILJS_PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY || '';
+// Public logo URL for email clients (cannot use local file paths)
+const LOGO_URL = 'https://raw.githubusercontent.com/pappi02/LogiCore/main/src/assets/logos/LogiCore_Technologies_logo-no%20bg.png';
+
+type SubmissionPreview = {
+  name: string;
+  email: string;
+};
 
 export const Contact: React.FC = () => {
   const [formData, setFormData] = useState({
@@ -12,7 +26,14 @@ export const Contact: React.FC = () => {
     message: '',
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
+  const [showSuccessModal, setShowSuccessModal] = useState(false);
+  const [lastSubmission, setLastSubmission] = useState<SubmissionPreview | null>(null);
+
+  useEffect(() => {
+    if (!showSuccessModal) return;
+    const timeout = window.setTimeout(() => setShowSuccessModal(false), 10000);
+    return () => window.clearTimeout(timeout);
+  }, [showSuccessModal]);
 
   const handleWhatsAppClick = () => {
     const message = encodeURIComponent('Hello! I would like to learn more about LogiCore Technologies services.');
@@ -22,16 +43,62 @@ export const Contact: React.FC = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
+
+    const subject = `New inquiry from ${formData.name || 'LogiCore visitor'}`;
+    const timestamp = new Date().toLocaleString('en-US', {
+      weekday: 'long',
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric',
+      hour: '2-digit',
+      minute: '2-digit',
+      timeZoneName: 'short'
+    });
     
-    // Simulate form submission
-    await new Promise(resolve => setTimeout(resolve, 1500));
-    
-    setIsSubmitting(false);
-    setSubmitStatus('success');
-    setFormData({ name: '', email: '', message: '' });
-    
-    // Reset status after 5 seconds
-    setTimeout(() => setSubmitStatus('idle'), 5000);
+    const templateParams = {
+      from_name: formData.name,
+      reply_to: formData.email,
+      message: formData.message,
+      to_email: COMPANY_EMAIL,
+      subject,
+      timestamp,
+    };
+
+    try {
+      await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, templateParams, EMAILJS_PUBLIC_KEY);
+
+      // Fire auto-reply to the user via a dedicated template (custom code method)
+      if (EMAILJS_AUTOREPLY_TEMPLATE_ID) {
+        const autoReplyParams = {
+          to_email: formData.email,
+          from_name: 'LogiCore Technologies',
+          subject: 'Thanks for contacting LogiCore — we got your message',
+          message: formData.message,
+          logo_url: LOGO_URL,
+        };
+        // Do not block UI on auto-reply; run and swallow errors
+        emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_AUTOREPLY_TEMPLATE_ID, autoReplyParams, EMAILJS_PUBLIC_KEY)
+          .catch((err) => console.warn('Auto-reply failed', err));
+      }
+
+      const submissionPreview: SubmissionPreview = {
+        name: formData.name,
+        email: formData.email,
+      };
+
+      setLastSubmission(submissionPreview);
+      setShowSuccessModal(true);
+      setFormData({ name: '', email: '', message: '' });
+    } catch (error) {
+      console.error('Email send failed', error);
+      alert('We could not send your message. Please try again in a moment.');
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
+  const handleModalClose = () => {
+    setShowSuccessModal(false);
   };
 
   const contactMethods = [
@@ -46,9 +113,9 @@ export const Contact: React.FC = () => {
     {
       icon: 'mail',
       title: 'Email',
-      description: 'info@logicore.tech',
+      description: COMPANY_EMAIL,
       action: 'Send Email',
-      onClick: () => window.location.href = 'mailto:info@logicore.tech',
+      onClick: () => window.location.href = `mailto:${COMPANY_EMAIL}`,
       color: 'var(--color-blue)',
     },
     {
@@ -158,11 +225,6 @@ export const Contact: React.FC = () => {
               >
                 {isSubmitting ? 'Sending...' : 'Send Message'}
               </Button>
-              {submitStatus === 'success' && (
-                <p className={styles.successMessage}>
-                  ✓ Thanks! We'll respond on WhatsApp soon.
-                </p>
-              )}
             </form>
           </div>
 
@@ -181,7 +243,7 @@ export const Contact: React.FC = () => {
                 <Icon name="mail" size="lg" color="var(--color-blue)" />
                 <div>
                   <h4>Email</h4>
-                    <a href="mailto:info@logicore.tech">info@logicore.tech</a>
+                    <a href={`mailto:${COMPANY_EMAIL}`}>{COMPANY_EMAIL}</a>
                 </div>
               </div>
               <div className={styles.infoItem}>
@@ -215,6 +277,50 @@ export const Contact: React.FC = () => {
           </div>
         </div>
       </Section>
+      {showSuccessModal && lastSubmission && (
+        <div
+          className={styles.modalOverlay}
+          role="alertdialog"
+          aria-modal="true"
+          aria-labelledby="success-title"
+          aria-describedby="success-description"
+          onClick={handleModalClose}
+        >
+          <div className={styles.modalContent} onClick={(e) => e.stopPropagation()}>
+            <div className={styles.modalIcon}>
+              <Icon name="check" size="lg" />
+            </div>
+            <h3 id="success-title">Message sent successfully</h3>
+            <p id="success-description" className={styles.modalText}>
+              {lastSubmission.name ? `Thanks, ${lastSubmission.name}!` : 'Thank you!'} We got your note and will follow up soon.
+            </p>
+            <div className={styles.modalChip}>
+              <span>We will reach you at</span>
+              <strong>{lastSubmission.email || COMPANY_EMAIL}</strong>
+            </div>
+            <div className={styles.statusList}>
+              <div className={`${styles.statusItem} ${styles.statusSuccess}`}>
+                <div className={styles.statusLeft}>
+                  <span className={styles.statusDot} />
+                  <div>
+                    <p className={styles.statusTitle}>Message sent</p>
+                    <span className={styles.statusHint}>Delivered to our inbox</span>
+                  </div>
+                </div>
+                <div className={styles.statusBadge}>
+                  <Icon name="check" size="sm" />
+                  <span>Completed</span>
+                </div>
+              </div>
+            </div>
+            <div className={styles.modalActions}>
+              <Button variant="primary" size="md" onClick={handleModalClose}>
+                OK
+              </Button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

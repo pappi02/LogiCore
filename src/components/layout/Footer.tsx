@@ -81,8 +81,8 @@ export const Footer: React.FC = () => {
             <ul className={styles.contactList}>
               <li className={styles.contactItem}>
                 <Icon name="mail" size="sm" />
-                <a href="mailto:info@logicore.tech" className={styles.link}>
-                  info@logicore.tech
+                <a href="mailto:logicore.tech1@gmail.com" className={styles.link}>
+                  logicore.tech1@gmail.com
                 </a>
               </li>
               <li className={styles.contactItem}>
